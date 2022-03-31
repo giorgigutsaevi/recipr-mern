@@ -3,7 +3,7 @@ import Cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 
-import recipes from "./models/Recipe.js"
+import RecipeSchema from "./models/Recipe.js"
 
 dotenv.config();
 
@@ -22,21 +22,25 @@ app.use(express.json());
 app.use(Cors());
 
 // API ENDPOINT configuration
-
-app.get("/", (req, res)=> {
+app.get("/", (req, res) => {
 	res.status(200).send("welcome to recipr!")
 })
 
 app.get("/api/v1/recipes", (req, res) => {
-	recipes.find((err, data) => {
+	RecipeSchema.find((err, data) => {
 		if (err) {
 			res.status(500).send(err)
-		}else{
+		} else {
 			res.status(200).send(data)
 		}
 	})
 })
 
+app.post("/api/v1/recipes", (req, res) => {
+	const data = req.body;
+	const newData = new RecipeSchema(data)
+	newData.save()
+})
 
 // Listener
 app.listen(port, () => {
