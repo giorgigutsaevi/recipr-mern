@@ -13,6 +13,9 @@ function Header() {
 				<Link to="/">
 					<p>My Recipes</p>
 				</Link>
+				<Link to="/add">
+					<p>Add a Recipe</p>
+				</Link>
 				<Link to="/about">
 					<p>About</p>
 				</Link>
