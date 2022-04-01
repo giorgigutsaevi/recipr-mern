@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import Recipe from "../Recipe/Recipe";
 import axios from "axios"
-import Recipe from "./Recipe"
+
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
