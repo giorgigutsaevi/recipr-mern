@@ -40,24 +40,28 @@ const AddRecipe = () => {
 					type='text'
 					onChange={handleChange}
 					name="title"
+					value={input.title}
 				/>
 				<input
 					placeholder='Add Image'
 					type='text'
 					onChange={handleChange}
 					name="image"
+					value={input.image}
 				/>
 				<input
 					placeholder='Add Description...'
 					type='text'
 					onChange={handleChange}
 					name="description"
+					value={input.description}
 				/>
 				<input
 					placeholder='Add Ingredients...'
 					type='text'
 					onChange={handleChange}
 					name="ingredients"
+					value={input.ingredients}
 				/>
 				<button
 				>
