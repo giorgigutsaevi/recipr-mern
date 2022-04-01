@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Recipe from "../Recipe/Recipe";
+import "./RecipeList.css"
 import axios from "axios"
 
 
@@ -23,7 +24,7 @@ const RecipesList = () => {
   ))
   
   return (
-    <div>
+    <div className="recipes">
       {receivedRecipes}
     </div>
   );
