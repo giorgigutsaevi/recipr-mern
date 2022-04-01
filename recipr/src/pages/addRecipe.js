@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
 import axios from "axios"
 
 const AddRecipe = () => {
+	const navigate = useNavigate();
 
-	const [input, setInput] = useState({
+	const [input, setInput] = useState({ 
 		title: "",
 		image: "",
 		description: "",
@@ -26,14 +28,14 @@ const AddRecipe = () => {
 			description: input.description,
 			ingredients: input.ingredients,
 		}
-
 		axios.post("http://localhost:5001/api/v1/recipes", newRecipe)
-		
+		navigate("/");
 	}
+
 
 	return (
 		<div>
-			<h1>Add Recipe!</h1>
+			<h1>Add Your Recipe!</h1>
 			<form method="post" onSubmit={handleSubmit} >
 				<input
 					placeholder='Recipe title'
@@ -64,6 +66,7 @@ const AddRecipe = () => {
 					value={input.ingredients}
 				/>
 				<button
+				
 				>
 					Submit Recipe
 				</button>
