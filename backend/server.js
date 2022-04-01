@@ -3,7 +3,7 @@ import Cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 
-import RecipeSchema from "./models/Recipe.js"
+import RecipeModel from "./models/Recipe.js"
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/api/v1/recipes", (req, res) => {
-	RecipeSchema.find((err, data) => {
+	RecipeModel.find((err, data) => {
 		if (err) {
 			res.status(500).send(err)
 		} else {
@@ -36,10 +36,25 @@ app.get("/api/v1/recipes", (req, res) => {
 	})
 })
 
-app.post("/api/v1/recipes", (req, res) => {
-	const data = req.body;
-	const newData = new RecipeSchema(data)
-	newData.save()
+app.post("/api/v1/recipes", async (req, res) => {
+	const newItem = new RecipeModel(req.body)
+	try {
+		await newItem.save()
+
+	} catch (error) {
+		console.log(error)
+	}
+})
+
+app.delete("/delete/:id", (req, res) => {
+	const recipeId = req.params.id
+	RecipeModel.findByIdAndDelete({ _id: recipeId }, (req, res, err) => {
+		if (!err) {
+			console.log("Item deleted")
+		} else {
+			console.log(err)
+		}
+	})
 })
 
 // Listener
