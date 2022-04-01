@@ -5,12 +5,14 @@ import axios from "axios"
 const AddRecipe = () => {
 	const navigate = useNavigate();
 
-	const [input, setInput] = useState({ 
+	const [input, setInput] = useState({
 		title: "",
 		image: "",
 		description: "",
 		ingredients: "",
 	})
+
+	const isInvalid = input.title === "" || input.title === "" || input.ingredients === "";
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -65,11 +67,7 @@ const AddRecipe = () => {
 					name="ingredients"
 					value={input.ingredients}
 				/>
-				<button
-				
-				>
-					Submit Recipe
-				</button>
+				<button disabled={isInvalid}>Submit Recipe</button>
 			</form>
 		</div>
 	)
