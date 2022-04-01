@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import axios from "axios"
+import Recipe from "./Recipe"
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -12,10 +14,16 @@ const RecipesList = () => {
       .catch(err => console.log(err))
   }, []);
 
+  const receivedRecipes = recipes.map(recipe => (
+    < Recipe 
+      key={recipe._id}
+      data={recipe}
+    />
+  ))
   
   return (
     <div>
-      
+      {receivedRecipes}
     </div>
   );
 };
