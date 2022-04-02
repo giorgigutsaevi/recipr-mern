@@ -1,12 +1,13 @@
 import React from "react";
 import "./Recipe.css";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
+import { pink } from '@mui/material/colors';
 
 const Recipe = (props) => {
   // props.data.title
-	// console.log(props.data.ingredients)
-
-
-	
+  // console.log(props.data.ingredients)
 
   return (
     <div className="card">
@@ -14,20 +15,22 @@ const Recipe = (props) => {
       <div className="card-body">
         <h5 className="card-text">{props.data.title}</h5>
         <p className="card-body">{props.data.description}</p>
-				<ul>
-					
-				</ul>
+        <ul></ul>
       </div>
       <div className="card--buttons__wrapper">
-        <button className="card--buttons__delete" onClick={()=> props.handleDelete(props.data._id)}>
-          <i className="bi bi-trash-fill"></i>
-        </button>
-        <button className="card--buttons__edit">
-          <i className="bi bi-pencil"></i>
-        </button>
-        <button className="card--buttons__favorite">
-          <i className="bi bi-heart"></i>
-        </button>
+        <Button 
+				variant="outlined" 
+				startIcon={<DeleteIcon sx={{ color: pink[500] }} />}
+				onClick={() => props.handleDelete(props.data._id)}
+				>
+          Delete
+        </Button>
+				<Button 
+				variant="outlined" 
+				startIcon={<EditIcon />}
+				>
+          Edit
+        </Button>
       </div>
     </div>
   );

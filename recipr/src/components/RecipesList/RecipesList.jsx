@@ -20,7 +20,8 @@ const RecipesList = () => {
     console.log(`deleted item with id ${recipeId}`)
     // automatically refreshes the page as soon as the item is deleted
     window.location.reload(false)
-  };
+  }; 
+
 
   const receivedRecipes = recipes.map((recipe) => (
     <Recipe key={recipe._id} data={recipe} handleDelete={handleDelete} />
