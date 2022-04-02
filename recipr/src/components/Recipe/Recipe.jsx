@@ -8,14 +8,13 @@ import { pink } from '@mui/material/colors';
 const Recipe = (props) => {
   // props.data.title
   // console.log(props.data.ingredients)
-
   return (
     <div className="card">
       <img src={props.data.image} alt="" className="card__image" />
       <div className="card-body">
         <h5 className="card-text">{props.data.title}</h5>
         <p className="card-body">{props.data.description}</p>
-        <ul></ul>
+        {/* <ul></ul> */}
       </div>
       <div className="card--buttons__wrapper">
         <Button 
@@ -28,6 +27,7 @@ const Recipe = (props) => {
 				<Button 
 				variant="outlined" 
 				startIcon={<EditIcon />}
+				onClick={() => props.handleEdit(props.data._id)}
 				>
           Edit
         </Button>

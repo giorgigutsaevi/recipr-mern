@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Recipe from "../Recipe/Recipe";
 import "./RecipeList.css";
 import axios from "axios";
+import EditingContext from '../../Context/EditingContext'
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
+  const {isEditing, setIsEditing} = useContext(EditingContext)
   const url = "http://localhost:5001/api/v1/recipes";
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -17,14 +22,23 @@ const RecipesList = () => {
 
   const handleDelete = (recipeId) => {
     axios.delete(`http://localhost:5001/delete/${recipeId}`);
-    console.log(`deleted item with id ${recipeId}`)
+    console.log(`deleted item with id ${recipeId}`);
     // automatically refreshes the page as soon as the item is deleted
-    window.location.reload(false)
-  }; 
+    window.location.reload(false);
+  };
 
+  const handleEdit = (recipeId) => {
+    navigate("/add");
+    setIsEditing(prevState => !prevState)
+  };
 
   const receivedRecipes = recipes.map((recipe) => (
-    <Recipe key={recipe._id} data={recipe} handleDelete={handleDelete} />
+    <Recipe
+      key={recipe._id}
+      data={recipe}
+      handleDelete={handleDelete}
+      handleEdit={handleEdit}
+    />
   ));
 
   return <div className="recipes">{receivedRecipes}</div>;

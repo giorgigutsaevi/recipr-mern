@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import axios from "axios"
+import EditingContext from '../Context/EditingContext'
 
 const AddRecipe = () => {
 	const navigate = useNavigate();
+	const {isEditing} = useContext(EditingContext)
 
 	const [input, setInput] = useState({
 		title: "",
@@ -37,7 +39,7 @@ const AddRecipe = () => {
 
 	return (
 		<div>
-			<h1>Add Your Recipe!</h1>
+			<h1>{isEditing ? "Update" : "Add"} Your Recipe!</h1>
 			<form method="post" onSubmit={handleSubmit} >
 				<input
 					placeholder='Recipe title'
