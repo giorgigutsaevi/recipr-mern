@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import Recipe from "../Recipe/Recipe";
 import "./RecipeList.css";
 import axios from "axios";
-import EditingContext from '../../Context/EditingContext'
+import EditingContext from "../../Context/EditingContext";
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
-  
-  const {editId, setEditId} = useContext(EditingContext);
+
+  const { editId, setEditId } = useContext(EditingContext);
 
   const url = "http://localhost:5001/api/v1/recipes";
   let navigate = useNavigate();
@@ -29,7 +29,7 @@ const RecipesList = () => {
   };
 
   const handleEdit = (recipeId) => {
-    setEditId(recipeId)
+    setEditId(recipeId);
     navigate(`/edit/${recipeId}`);
   };
 
@@ -42,7 +42,13 @@ const RecipesList = () => {
     />
   ));
 
-  return <div className="recipes">{receivedRecipes}</div>;
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="recipes">{receivedRecipes}</div>
+      </div>
+    </div>
+  );
 };
 
 export default RecipesList;
