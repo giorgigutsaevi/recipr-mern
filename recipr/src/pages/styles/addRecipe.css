@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.body {
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg) center center no-repeat;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.form--wrapper input {
+	border-radius: 10px;
+	padding: 7px 14px;
+	background-color: pink;
+
+}
+
+.add-h1 {
+	color: #46244C;
+}
+
+.addButton {
+	display: block;
+	margin: 0 auto;
+	line-height: 14px;
+	padding: 10px 20px;
+	background: #ffa580;
+	letter-spacing: 2px;
+	transition: .2s all ease-in-out;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 1);
+	box-shadow: 3px 3px 1px #95a4ff, 3px 3px 1px 1px rgba(0, 0, 0, 1);
+}

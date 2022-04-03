@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import EditingContext from '../Context/EditingContext';
+import "./styles/editRecipe.css"
 
 const EditRecipe = () => {
 	const navigate = useNavigate();
@@ -34,38 +35,41 @@ const EditRecipe = () => {
 	}
 
 	return (
-		<div>
-			<h1>Update Your Recipe!</h1>
-			<input
-				placeholder='Recipe title'
-				type='text'
-				onChange={handleUpdate}
-				name="title"
-				value={updatedItem.title}
-			/>
-			<input
-				placeholder='Add Image'
-				type='text'
-				onChange={handleUpdate}
-				name="image"
-				value={updatedItem.image}
-			/>
-			<input
-				placeholder='Add Description...'
-				type='text'
-				onChange={handleUpdate}
-				name="description"
-				value={updatedItem.description}
-			/>
-			<input
-				placeholder='Add Ingredients...'
-				type='text'
-				onChange={handleUpdate}
-				name="ingredients"
-				value={updatedItem.ingredients}
-			/>
-			<button type='submit' onClick={() => updateItem(updatedItem.id)} disabled={updatedBtnisInvalid}>Update Recipe</button>
-
+		<div className='body'>
+			<div className='form--wrapper'>
+				<div className='edit--form'>
+					<h1 className='form--h1'>Update Your Recipe</h1>
+					<input
+						placeholder='Recipe title'
+						type='text'
+						onChange={handleUpdate}
+						name="title"
+						value={updatedItem.title}
+					/>
+					<input
+						placeholder='Image URL'
+						type='text'
+						onChange={handleUpdate}
+						name="image"
+						value={updatedItem.image}
+					/>
+					<input
+						placeholder='Add Description...'
+						type='text'
+						onChange={handleUpdate}
+						name="description"
+						value={updatedItem.description}
+					/>
+					<input
+						placeholder='Add Ingredients...'
+						type='text'
+						onChange={handleUpdate}
+						name="ingredients"
+						value={updatedItem.ingredients}
+					/>
+					<button className='updateButton' type='submit' onClick={() => updateItem(updatedItem.id)} disabled={updatedBtnisInvalid}>Update Recipe</button>
+				</div>
+			</div>
 		</div>
 	)
 }

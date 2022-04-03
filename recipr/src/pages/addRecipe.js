@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from "axios"
+import "./styles/addRecipe.css"
 
 
 const AddRecipe = () => {
@@ -38,10 +39,10 @@ const AddRecipe = () => {
 	}
 
 	return (
-		<div>
-			<div>
-				<h1>Add Your Recipe!</h1>
-				<form method="post" onSubmit={handleSubmit}>
+		<div className='body'>
+			<div className='form--wrapper'>
+				<h1 className='text-center add-h1'>Add Your Recipe</h1>
+				<form className='form' method="post" onSubmit={handleSubmit}>
 					<input
 						placeholder='Recipe title'
 						type='text'
@@ -70,11 +71,48 @@ const AddRecipe = () => {
 						name="ingredients"
 						value={input.ingredients}
 					/>
-					<button type='submit' disabled={isInvalid}>Submit Recipe</button>
+					<button className='addButton' type='submit' disabled={isInvalid}>Submit Recipe</button>
 				</form>
 			</div>
-		</div>
+			</div>
 	)
 }
 
 export default AddRecipe;
+
+{/* <div className='body'>
+			<div className='form--wrapper'>
+				<div className='edit--form'>
+					<h1 className='form--h1'>Update Your Recipe</h1>
+					<input
+						placeholder='Recipe title'
+						type='text'
+						onChange={handleUpdate}
+						name="title"
+						value={updatedItem.title}
+					/>
+					<input
+						placeholder='Image URL'
+						type='text'
+						onChange={handleUpdate}
+						name="image"
+						value={updatedItem.image}
+					/>
+					<input
+						placeholder='Add Description...'
+						type='text'
+						onChange={handleUpdate}
+						name="description"
+						value={updatedItem.description}
+					/>
+					<input
+						placeholder='Add Ingredients...'
+						type='text'
+						onChange={handleUpdate}
+						name="ingredients"
+						value={updatedItem.ingredients}
+					/>
+					<button className='updateButton' type='submit' onClick={() => updateItem(updatedItem.id)} disabled={updatedBtnisInvalid}>Update Recipe</button>
+				</div>
+			</div>
+		</div> */}

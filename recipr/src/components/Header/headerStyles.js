@@ -8,6 +8,7 @@ const styles = {
 	},
 	CustomNavElement: {
 		color: 'snow',
+		fontSize: '1.2rem',
 		fontWeight: "bold",
 	},
 };
