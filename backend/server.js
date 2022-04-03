@@ -34,7 +34,7 @@ app.get("/api/v1/recipes", (req, res) => {
 			res.status(200).send(data)
 		}
 	})
-})
+ })
 
 app.post("/api/v1/recipes", async (req, res) => {
 	const newItem = new RecipeModel(req.body)
@@ -55,6 +55,28 @@ app.delete("/delete/:id", (req, res) => {
 			console.log(err)
 		}
 	})
+})
+
+app.put("/edit/:id", (req, res) => {
+	const recipeId = req.params.id
+	console.log(recipeId)
+	const updatedRecipe = {
+		title: req.body.title,
+		image: req.body.image,
+		description: req.body.description,
+		ingredients: req.body.ingredients,
+
+	}
+	RecipeModel.findByIdAndUpdate(
+		{ _id: recipeId },
+		{ $set: updatedRecipe },
+		(req, res, err) => {
+			if (!err) {
+				console.log("Item updated")
+			} else {
+				console.log(err)
+			}
+		})
 })
 
 // Listener

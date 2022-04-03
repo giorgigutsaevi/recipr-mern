@@ -8,9 +8,10 @@ import EditingContext from '../../Context/EditingContext'
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
-  const {isEditing, setIsEditing} = useContext(EditingContext)
-  const url = "http://localhost:5001/api/v1/recipes";
+  
+  const {isEditing, setIsEditing} = useContext(EditingContext);
 
+  const url = "http://localhost:5001/api/v1/recipes";
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -22,14 +23,15 @@ const RecipesList = () => {
 
   const handleDelete = (recipeId) => {
     axios.delete(`http://localhost:5001/delete/${recipeId}`);
-    console.log(`deleted item with id ${recipeId}`);
+
     // automatically refreshes the page as soon as the item is deleted
     window.location.reload(false);
   };
 
   const handleEdit = (recipeId) => {
-    navigate("/add");
-    setIsEditing(prevState => !prevState)
+    setIsEditing(recipeId)
+    navigate(`/edit/${recipeId}`);
+    console.log(`item with id: ${recipeId} was updated!`)
   };
 
   const receivedRecipes = recipes.map((recipe) => (
