@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import EditingContext from '../Context/EditingContext';
-import "./styles/editRecipe.css"
+import "../styles/editRecipe.css"
 
 const EditRecipe = () => {
 	const navigate = useNavigate();

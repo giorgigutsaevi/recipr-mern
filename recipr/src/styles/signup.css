@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.signup {
+  background: url(https://thumbs.dreamstime.com/b/greek-food-background-traditional-different-greek-dishes-set-greek-food-background-traditional-different-greek-dishes-set-top-view-178761927.jpg) center center no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.signup__wrapper {
+  background: #fafafa;
+  padding: 50px 100px;
+  border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 15px 15px 1px #a10102, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.signup__h1{
+  font-family: 'Fjalla One';
+}
+
+
+.signup__wrapper input {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: 'Fjalla One';
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 5px solid rgba(0, 0, 0, 1);
+  background: #fafafa;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.signup__wrapper input:focus {
+  border-bottom: 5px solid #517619;
+}
+
+.signup__button {
+  display: block;
+  margin: 0 auto;
+  line-height: 14px;
+  padding: 10px 20px;
+  color: #212529;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px #95a4ff, 3px 3px 1px 1px rgba(0, 0, 0, 1);
+}
+
+
