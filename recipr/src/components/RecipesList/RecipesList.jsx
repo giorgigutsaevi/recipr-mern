@@ -9,7 +9,7 @@ import EditingContext from '../../Context/EditingContext'
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
   
-  const {isEditing, setIsEditing} = useContext(EditingContext);
+  const {editId, setEditId} = useContext(EditingContext);
 
   const url = "http://localhost:5001/api/v1/recipes";
   let navigate = useNavigate();
@@ -29,9 +29,8 @@ const RecipesList = () => {
   };
 
   const handleEdit = (recipeId) => {
-    setIsEditing(recipeId)
+    setEditId(recipeId)
     navigate(`/edit/${recipeId}`);
-    console.log(`item with id: ${recipeId} was updated!`)
   };
 
   const receivedRecipes = recipes.map((recipe) => (

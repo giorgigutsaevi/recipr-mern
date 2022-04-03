@@ -1,13 +1,13 @@
 import axios from 'axios';
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import EditingContext from '../Context/EditingContext';
 
 const EditRecipe = () => {
 	const navigate = useNavigate();
 
-	const { isEditing } = useContext(EditingContext)
-	console.log(isEditing)
+	const { editId } = useContext(EditingContext)
+	console.log(editId)
 
 	const [updatedItem, setUpdatedItem] = useState({
 		title: "",
@@ -24,16 +24,13 @@ const EditRecipe = () => {
 		setUpdatedItem(prevState => ({
 			...prevState,
 			[name]: value,
-			id: isEditing,
+			id: editId,
 		}))
 	}
 
 	const updateItem = (id) => {
-		// axios.put(`/edit/${id}`, updatedItem);
 		axios.put(`http://localhost:5001/edit/${id}`, updatedItem)
-		console.log('from within updateItem function: ', id)
 		navigate("/")
-
 	}
 
 	return (

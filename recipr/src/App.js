@@ -8,10 +8,10 @@ import EditRecipe from "./pages/editRecipe"
 import EditingContext from "./Context/EditingContext"
 
 function App() {
-  const [isEditing, setIsEditing] = useState("")
+  const [editId, setEditId] = useState("")
 
   return (
-    <EditingContext.Provider value={{isEditing, setIsEditing}}>
+    <EditingContext.Provider value={{editId, setEditId}}>
       <Router>
         <Routes>
           <Route exact path='/' element={<Dashboard />}></Route>
