@@ -6,6 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 90vh !important;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg) center center no-repeat;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
 }
 
 code {

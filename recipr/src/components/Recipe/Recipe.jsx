@@ -1,36 +1,60 @@
 import React from "react";
-import "./Recipe.css";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { pink } from "@mui/material/colors";
 
 const Recipe = (props) => {
   return (
-    <div className="card">
-      <img src={props.data.image} alt="" className="card__image" />
-      <div className="card-body">
-        <h5 className="card-text">{props.data.title}</h5>
-        <p className="card-body">{props.data.description}</p>
-        {/* <ul></ul> */}
-      </div>
-      <div className="card--buttons__wrapper">
+    <Card sx={{ maxWidth: 400 }}>
+      <CardMedia
+        component="img"
+        alt="recipe img"
+        height="200"
+        image={props.data.image}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {props.data.title}
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{
+            height: 80,
+          }}
+        >
+          {props.data.description}
+        </Typography>
+      </CardContent>
+      <CardActions>
         <Button
-          variant="outlined"
-          startIcon={<DeleteIcon sx={{ color: pink[500] }} />}
+          size="medium"
+					sx={{
+						border: 1,
+          }}
           onClick={() => props.handleDelete(props.data._id)}
+          startIcon={<DeleteIcon />}
         >
           Delete
         </Button>
         <Button
-          variant="outlined"
-          startIcon={<EditIcon />}
+          size="medium"
+          sx={{
+            color: "#ff9100",
+						border: 1,
+          }}
           onClick={() => props.handleEdit(props.data._id)}
+          startIcon={<EditIcon />}
         >
-          Edit
+          Edit Recipe
         </Button>
-      </div>
-    </div>
+      </CardActions>
+    </Card>
   );
 };
 

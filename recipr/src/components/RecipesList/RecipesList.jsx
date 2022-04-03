@@ -44,9 +44,7 @@ const RecipesList = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="recipes">{receivedRecipes}</div>
-      </div>
+      <div className="recipes">{receivedRecipes}</div>
     </div>
   );
 };

@@ -8,7 +8,6 @@ const EditRecipe = () => {
 	const navigate = useNavigate();
 
 	const { editId } = useContext(EditingContext)
-	console.log(editId)
 
 	const [updatedItem, setUpdatedItem] = useState({
 		title: "",
@@ -29,8 +28,11 @@ const EditRecipe = () => {
 		}))
 	}
 
-	const updateItem = (id) => {
-		axios.put(`http://localhost:5001/edit/${id}`, updatedItem)
+	const updateItem = async (id) => {
+		axios.put(`http://localhost:5001/edit/${id}`, updatedItem);
+	}
+
+	const onSubmit = () => {
 		navigate("/")
 	}
 
@@ -39,35 +41,43 @@ const EditRecipe = () => {
 			<div className='form--wrapper'>
 				<div className='edit--form'>
 					<h1 className='form--h1'>Update Your Recipe</h1>
-					<input
-						placeholder='Recipe title'
-						type='text'
-						onChange={handleUpdate}
-						name="title"
-						value={updatedItem.title}
-					/>
-					<input
-						placeholder='Image URL'
-						type='text'
-						onChange={handleUpdate}
-						name="image"
-						value={updatedItem.image}
-					/>
-					<input
-						placeholder='Add Description...'
-						type='text'
-						onChange={handleUpdate}
-						name="description"
-						value={updatedItem.description}
-					/>
-					<input
-						placeholder='Add Ingredients...'
-						type='text'
-						onChange={handleUpdate}
-						name="ingredients"
-						value={updatedItem.ingredients}
-					/>
-					<button className='updateButton' type='submit' onClick={() => updateItem(updatedItem.id)} disabled={updatedBtnisInvalid}>Update Recipe</button>
+					<form onSubmit={onSubmit}>
+						<input
+							placeholder='Recipe title'
+							type='text'
+							onChange={handleUpdate}
+							name="title"
+							value={updatedItem.title}
+						/>
+						<input
+							placeholder='Image URL'
+							type='text'
+							onChange={handleUpdate}
+							name="image"
+							value={updatedItem.image}
+						/>
+						<input
+							placeholder='Add Description...'
+							type='text'
+							onChange={handleUpdate}
+							name="description"
+							value={updatedItem.description}
+						/>
+						<input
+							placeholder='Add Ingredients...'
+							type='text'
+							onChange={handleUpdate}
+							name="ingredients"
+							value={updatedItem.ingredients}
+						/>
+						<button
+							className='updateButton'
+							type='submit'
+							onClick={() => updateItem(updatedItem.id)}
+							disabled={updatedBtnisInvalid}>
+							Update Recipe
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>

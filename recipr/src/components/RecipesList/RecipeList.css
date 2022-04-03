@@ -3,9 +3,10 @@
 }
 
 .recipes{
+	margin: auto;
   display: grid;
-  grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	padding: 10px;
+	grid-gap: 1rem;
+	padding: 15px;
 }
 
