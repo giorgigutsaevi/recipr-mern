@@ -36,6 +36,7 @@ const Recipe = (props) => {
           size="medium"
 					sx={{
 						border: 1,
+						color: "#ab003c"
           }}
           onClick={() => props.handleDelete(props.data._id)}
           startIcon={<DeleteIcon />}
@@ -45,7 +46,7 @@ const Recipe = (props) => {
         <Button
           size="medium"
           sx={{
-            color: "#ff9100",
+            color: "##3f51b5",
 						border: 1,
           }}
           onClick={() => props.handleEdit(props.data._id)}
