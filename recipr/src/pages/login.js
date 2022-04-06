@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
+import axios from 'axios'
 import "../styles/login.css"
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState({
-    username: "",
     email: "",
     password: '',
 
   })
 
-  const isInvalid = loginInput.username === "" || loginInput.email === "" || loginInput.password === "";
+  const isInvalid = loginInput.email === "" || loginInput.password === "";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,10 +22,12 @@ const Login = () => {
     })
   }
 
-  console.log(loginInput);
+  const navigate = useNavigate()
 
-  const handleLogin = () => {
-
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:5001/users/login", loginInput);
+    navigate("/")
   }
   return (
     <div className='login'>
@@ -32,13 +35,6 @@ const Login = () => {
         <div className='login__form'>
           <h1 className='login__h1'>Login to Recipr</h1>
           <form onSubmit={handleLogin} >
-            <input
-              placeholder='Username'
-              type='text'
-              onChange={handleChange}
-              name="username"
-              value={loginInput.username}
-            />
             <input
               placeholder='Email'
               type='email'

@@ -29,7 +29,7 @@ const Signup = () => {
     e.preventDefault();
     await axios.post("http://localhost:5001/users/register", signUpInput);
     navigate("/")
-  }
+  } 
 
 
   return (

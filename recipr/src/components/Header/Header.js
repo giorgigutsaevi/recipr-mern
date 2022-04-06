@@ -18,18 +18,8 @@ function Header() {
 						>
 							<Nav.Link href="/" style={styles.CustomNavElement}>My Recipes</Nav.Link>
 							<Nav.Link href="/add" style={styles.CustomNavElement}>Add a Recipe</Nav.Link>
-							<Nav.Link href="/about" style={styles.CustomNavElement}>About</Nav.Link>
-							<Nav.Link href="/contact-us" style={styles.CustomNavElement}>Contact</Nav.Link>
+							<p></p>
 						</Nav>
-						<Form className="d-flex">
-							<FormControl
-								type="search"
-								placeholder="Search"
-								className="me-2"
-								aria-label="Search"
-							/>
-							<Button variant="outline-success">Search</Button>
-						</Form>
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>

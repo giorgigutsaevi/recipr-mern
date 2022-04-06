@@ -30,6 +30,24 @@ router.post("/users/register", async (req, res) => {
 	}
 })
 
+router.post("/users/login", async (req, res) => {
+
+	// Checking if email exists
+	const user = await UserModel.findOne({ email: req.body.email });
+	if (!user) {
+		return res.status(400).send("Invalid email")
+	}
+	if (user){
+		const token = jwt.sign({
+			_id: user.id,
+			email: user.email
+		}, process.env.JWT_SECRET)
+
+		console.log(token)
+		return res.json({status: 'ok', user: token})
+	}
+})
+
 
 
 export default router;
