@@ -23,14 +23,15 @@ const AddRecipe = () => {
 		}))
 	}
 
-	const _createRecipe = () => {
+	const _createRecipe = async () => {
 		const newRecipe = {
 			title: input.title,
 			image: input.image,
 			description: input.description,
 			ingredients: input.ingredients,
 		}
-		axios.post("http://localhost:5001/api/v1/recipes", newRecipe);
+		await axios.post("http://localhost:5001/api/v1/recipes", newRecipe);
+	
 	}
 
 	const handleSubmit = () => {

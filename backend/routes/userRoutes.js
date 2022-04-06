@@ -1,11 +1,12 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
 import UserModel from "../models/User.js"
+import jwt from 'jsonwebtoken'
 
 const router = express.Router();
 
+// Create a user
 router.post("/users/register", async (req, res) => {
-
 	const emailExist = await UserModel.findOne({ email: req.body.email });
 	if (emailExist) {
 		return res.status(400).send("Email already exists")
@@ -28,5 +29,7 @@ router.post("/users/register", async (req, res) => {
 		res.status(400).send(err)
 	}
 })
+
+
 
 export default router;

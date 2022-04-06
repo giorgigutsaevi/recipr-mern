@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const Recipe = new mongoose.Schema({
 	title: {
-		type: String, 
+		type: String,
 		required: true,
 	},
 	image: {
@@ -10,7 +10,7 @@ const Recipe = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-	}, 
+	},
 	ingredients: [
 		{
 			type: String,
