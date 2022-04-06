@@ -9,7 +9,8 @@ import AuthContext from '../../Context/AuthContext'
 function Header() {
 
 	const navigate = useNavigate();
-	const { getLoggedIn } = useContext(AuthContext)
+	const { loggedIn, getLoggedIn } = useContext(AuthContext)
+	console.log(loggedIn)
 
 	const handleLogout = async (e) => {
 		e.preventDefault();
@@ -33,7 +34,16 @@ function Header() {
 					>
 						<Nav.Link href="/" style={styles.CustomNavElement}>My Recipes</Nav.Link>
 						<Nav.Link href="/add" style={styles.CustomNavElement}>Add a Recipe</Nav.Link>
-						<Nav.Link onClick={handleLogout} style={styles.Logout}>Logout</Nav.Link>
+						{loggedIn ?
+							(
+								<Nav.Link onClick={handleLogout} style={styles.Logout}>Log out</Nav.Link>
+							) :
+							(<>
+								<Nav.Link onClick={handleLogout} style={styles.Logout}>Log in</Nav.Link>
+								<Nav.Link onClick={handleLogout} style={styles.Logout}>Sign up</Nav.Link>
+							</>
+							)}
+
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

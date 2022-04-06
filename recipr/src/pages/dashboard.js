@@ -7,6 +7,7 @@ const Dashboard = () => {
 		<div>
 			<Header />
 			<RecipesList/>
+
 		</div>
 	)
 }
