@@ -11,6 +11,11 @@ const styles = {
 		fontSize: '1.2rem',
 		fontWeight: "bold",
 	},
+	Logout: {
+		color: 'gray',
+		fontSize: '1.2rem',
+		fontWeight: "bold",
+	}
 };
 
 export default styles;

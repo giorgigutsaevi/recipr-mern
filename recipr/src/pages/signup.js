@@ -1,7 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router';
 import "../styles/signup.css"
+import AuthContext from '../Context/AuthContext'
+
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,7 @@ const Signup = () => {
 
   })
 
+  const getLoggedIn = useContext(AuthContext)
   const isInvalid = formData.username === "" || formData.email === "" || formData.password === "";
 
   const handleChange = (e) => {
@@ -30,7 +33,9 @@ const Signup = () => {
     await axios.post("http://localhost:5001/users/register", formData, {
       withCredentials: true
     });
+    await getLoggedIn()
     navigate("/")
+
   }
 
 

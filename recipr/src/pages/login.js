@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import "../styles/login.css"
+import { useContext } from 'react'
+import AuthContext from '../Context/AuthContext'
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState({
     email: "",
     password: '',
-
   })
+
+  const { getLoggedIn } = useContext(AuthContext);
 
   const isInvalid = loginInput.email === "" || loginInput.password === "";
 
@@ -27,7 +30,9 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:5001/users/login", loginInput);
+    await getLoggedIn()
     navigate("/")
+  
   }
   return (
     <div className='login'>

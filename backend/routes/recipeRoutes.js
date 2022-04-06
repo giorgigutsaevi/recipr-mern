@@ -4,6 +4,7 @@ import auth from "../middleware/auth.js"
 
 const router = express.Router()
 
+
 // getting all recipes
 router.get('/api/v1/recipes', auth, async (req, res) => {
 
