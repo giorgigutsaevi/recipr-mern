@@ -7,17 +7,20 @@ const router = express.Router()
 
 // getting all recipes
 router.get('/api/v1/recipes', auth, async (req, res) => {
-
+	console.log(req.user)
+	// {user: req.user.id}
 	try {
 		const recipes = await RecipeModel.find()
 		res.send(recipes)
-	} catch (error) {
+	} catch (err) {
 		res.status(500).send(err)
 	}
 })
 
 // Posting a recipe
 router.post("/api/v1/recipes", auth, async (req, res) => {
+	console.log('posting', req.body)
+	
 	const newItem = new RecipeModel(req.body)
 	try {
 		await newItem.save()
