@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
 import "../styles/signup.css"
 
 const Signup = () => {
@@ -21,8 +23,12 @@ const Signup = () => {
     ))
   }
 
-  const handleSubmit = () => {
+  const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:5001/users/register", signUpInput);
+    navigate("/")
   }
 
 

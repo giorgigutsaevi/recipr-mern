@@ -4,8 +4,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 
 import recipeRoute from "./routes/recipeRoutes.js"
-
-// import RecipeModel from "./models/Recipe.js"
+import userRoute from "./routes/userRoutes.js"
 
 dotenv.config();
 
@@ -24,12 +23,12 @@ app.use(express.json());
 app.use(Cors());
 
 app.get("/", (req, res) => {
-	res.status(200).send("welcome to recipr!")
+	res.status(200).send("welcome to recipr!");
 })
 
 // API Middleware
-app.use("/", recipeRoute)
-
+app.use("/", recipeRoute);
+app.use("/", userRoute);
 
 
 
