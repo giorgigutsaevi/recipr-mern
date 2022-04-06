@@ -8,9 +8,10 @@ const router = express.Router()
 // getting all recipes
 router.get('/api/v1/recipes', auth, async (req, res) => {
 	console.log(req.user)
-	// {user: req.user.id}
+	console.log("ID :::", req.user._id)
+	// {user: req.user._id}
 	try {
-		const recipes = await RecipeModel.find()
+		const recipes = await RecipeModel.find({user: req.user._id})
 		res.send(recipes)
 	} catch (err) {
 		res.status(500).send(err)
@@ -20,14 +21,24 @@ router.get('/api/v1/recipes', auth, async (req, res) => {
 // Posting a recipe
 router.post("/api/v1/recipes", auth, async (req, res) => {
 	console.log('posting', req.body)
-	
-	const newItem = new RecipeModel(req.body)
-	try {
-		await newItem.save()
+	console.log("ID ->", req.user.id)
 
-	} catch (error) {
-		console.log(error)
-	}
+	const recipe = await RecipeModel.create({
+		title: req.body.title,
+		image: req.body.image,
+		description: req.body.description,
+		ingredients: req.body.ingredients,
+		user: req.user._id
+
+	})
+
+	// const newItem = new RecipeModel(req.body)
+	// try {
+	// 	await newItem.save()
+
+	// } catch (error) {
+	// 	console.log(error)
+	// }
 })
 
 // Deleting a recipe
