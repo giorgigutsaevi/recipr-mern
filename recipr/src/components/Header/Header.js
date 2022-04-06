@@ -1,9 +1,20 @@
+import axios from 'axios'
 import React from 'react'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router'
 import { Container } from 'react-bootstrap'
 import  styles  from "./headerStyles"
 
 function Header() {
+
+	const navigate = useNavigate()
+
+	const handleLogout = (e) => {
+		e.preventDefault();
+		axios.get("http://localhost:5001/users/logout")
+		navigate("/login")
+	}
+
 	return (
 		<div>
 			<Navbar expand="lg" style={styles.Navbar}>
@@ -18,7 +29,7 @@ function Header() {
 						>
 							<Nav.Link href="/" style={styles.CustomNavElement}>My Recipes</Nav.Link>
 							<Nav.Link href="/add" style={styles.CustomNavElement}>Add a Recipe</Nav.Link>
-							<p></p>
+							<Nav.Link onClick={handleLogout} style={styles.CustomNavElement}>Logout</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

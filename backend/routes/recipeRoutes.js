@@ -1,21 +1,22 @@
 import express from 'express'
 import RecipeModel from "../models/Recipe.js"
+import auth from "../middleware/auth.js"
 
 const router = express.Router()
 
 // getting all recipes
-router.get('/api/v1/recipes', (req, res) => {
-	RecipeModel.find((err, data) => {
-		if (err) {
-			res.status(500).send(err)
-		} else {
-			res.status(200).send(data)
-		}
-	})
+router.get('/api/v1/recipes', auth, async (req, res) => {
+
+	try {
+		const recipes = await RecipeModel.find()
+		res.send(recipes)
+	} catch (error) {
+		res.status(500).send(err)
+	}
 })
 
 // Posting a recipe
-router.post("/api/v1/recipes", async (req, res) => {
+router.post("/api/v1/recipes", auth, async (req, res) => {
 	const newItem = new RecipeModel(req.body)
 	try {
 		await newItem.save()
@@ -26,19 +27,19 @@ router.post("/api/v1/recipes", async (req, res) => {
 })
 
 // Deleting a recipe
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", auth, (req, res) => {
 	const recipeId = req.params.id
-		RecipeModel.findByIdAndDelete({ _id: recipeId }, (req, res, err) => {
-			if (!err) {
-				console.log("Item deleted")
-			} else {
-				console.log(err)
-			}
-		})
+	RecipeModel.findByIdAndDelete({ _id: recipeId }, (req, res, err) => {
+		if (!err) {
+			console.log("Item deleted")
+		} else {
+			console.log(err)
+		}
+	})
 })
 
 // Editing a recipe
-router.put("/edit/:id", (req, res) => {
+router.put("/edit/:id", auth, (req, res) => {
 	const recipeId = req.params.id
 	const updatedRecipe = {
 		title: req.body.title,

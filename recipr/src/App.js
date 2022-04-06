@@ -8,6 +8,9 @@ import EditRecipe from "./pages/editRecipe"
 import EditingContext from "./Context/EditingContext"
 import Login from './pages/login';
 import Signup from './pages/signup';
+import axios from "axios"
+
+axios.defaults.withCredentials = true;
 
 function App() {
   const [editId, setEditId] = useState("")

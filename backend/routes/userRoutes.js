@@ -25,7 +25,7 @@ router.post("/users/register", async (req, res) => {
 	})
 	try {
 		const savedUser = await user.save()
-		res.send(savedUser)
+		console.log(savedUser)
 
 		const token = jwt.sign({
 			_id: user.id,
@@ -67,10 +67,9 @@ router.post("/users/login", async (req, res) => {
 			res.cookie("token", token, {
 				httpOnly: true,
 			})
-				.send();
+				.send({ status: 'ok', user: token });
 
 			console.log(token)
-			return res.json({ status: 'ok', user: token })
 		}
 
 	} catch (err) {
@@ -87,7 +86,7 @@ router.get("/users/logout", (req, res) => {
 		expires: new Date(0)
 	})
 		.send("Logged Out!");
-
+	console.log("logged out")
 })
 
 

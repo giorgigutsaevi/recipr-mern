@@ -1,7 +1,8 @@
 import express from "express"
-import Cors from "cors"
+import cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import cookieParser from 'cookie-parser'
 
 import recipeRoute from "./routes/recipeRoutes.js"
 import userRoute from "./routes/userRoutes.js"
@@ -20,10 +21,14 @@ const port = 5001;
 
 // setting up the middleware
 app.use(express.json());
-app.use(Cors());
+app.use(cookieParser())
+app.use(cors({
+	origin: ["http://localhost:3000"],
+	credentials: true,
+}));
 
 app.get("/", (req, res) => {
-	res.status(200).send("welcome to recipr!");
+	res.status(200).send("welcome to recipr!")
 })
 
 // API Middleware
