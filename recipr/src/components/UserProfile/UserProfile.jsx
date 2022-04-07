@@ -3,11 +3,13 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../Context/UserContext";
 import jwtDecode from "jwt-decode";
 import "./UserProfile.css";
-import { toDate } from "date-fns/esm";
+import { useDate } from "../../hooks/useTime";
 
 const UserProfile = () => {
   const [username, setUsername] = useState("");
   const { userToken } = useContext(UserContext);
+
+  const { time, wish } = useDate();
 
   const displayDate = () => {
     const currentDate = new Date();
@@ -30,10 +32,15 @@ const UserProfile = () => {
 
   return (
     <div className="userProfile">
-      <div className='userProfile--message__wrapper'>
-        <h1 className="userProfile__title">Welcome, {username} 👋 </h1>
+      <div className="userProfile--message__wrapper">
+        <h1 className="userProfile__title">{wish} {username} 👋 </h1>
         <h5 className="userProfile__date">{displayDate()}</h5>
       </div>
+			<div className="userProfile--timeWeather__wrapper">
+				<h6>⌚️ {time}</h6>
+				<p>🌡 </p>
+			</div>
+		
     </div>
   );
 };
