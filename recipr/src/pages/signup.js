@@ -13,7 +13,7 @@ const Signup = () => {
 
   })
 
-  const getLoggedIn = useContext(AuthContext)
+  const { getLoggedIn } = useContext(AuthContext)
   const isInvalid = formData.username === "" || formData.email === "" || formData.password === "";
 
   const handleChange = (e) => {

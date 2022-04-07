@@ -7,9 +7,6 @@ const router = express.Router()
 
 // getting all recipes
 router.get('/api/v1/recipes', auth, async (req, res) => {
-	console.log(req.user)
-	console.log("ID :::", req.user._id)
-	// {user: req.user._id}
 	try {
 		const recipes = await RecipeModel.find({user: req.user._id})
 		res.send(recipes)
@@ -20,8 +17,6 @@ router.get('/api/v1/recipes', auth, async (req, res) => {
 
 // Posting a recipe
 router.post("/api/v1/recipes", auth, async (req, res) => {
-	console.log('posting', req.body)
-	console.log("ID ->", req.user.id)
 
 	const recipe = await RecipeModel.create({
 		title: req.body.title,
@@ -32,13 +27,12 @@ router.post("/api/v1/recipes", auth, async (req, res) => {
 
 	})
 
-	// const newItem = new RecipeModel(req.body)
-	// try {
-	// 	await newItem.save()
+	try {
+		await recipe.save()
 
-	// } catch (error) {
-	// 	console.log(error)
-	// }
+	} catch (error) {
+		console.log(error)
+	}
 })
 
 // Deleting a recipe
@@ -74,12 +68,6 @@ router.put("/edit/:id", auth, (req, res) => {
 			}
 		})
 })
-
-
-
-
-
-
 
 
 export default router;

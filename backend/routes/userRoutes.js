@@ -24,12 +24,12 @@ router.post("/users/register", async (req, res) => {
 		password: hashedPassword,
 	})
 	try {
-		const savedUser = await user.save()
-		console.log(savedUser)
+		await user.save()
 
 		const token = jwt.sign({
 			_id: user.id,
-			email: user.email
+			email: user.email,
+			username: user.username
 		}, process.env.JWT_SECRET)
 
 		res.cookie("token", token, {
@@ -61,15 +61,14 @@ router.post("/users/login", async (req, res) => {
 		if (user) {
 			const token = jwt.sign({
 				_id: user.id,
-				email: user.email
+				email: user.email,
+				username: user.username
 			}, process.env.JWT_SECRET)
 
 			res.cookie("token", token, {
 				httpOnly: true,
 			})
 				.send({ status: 'ok', user: token });
-
-			console.log(token)
 		}
 
 	} catch (err) {
@@ -92,13 +91,29 @@ router.get("/users/logout", (req, res) => {
 router.get("/loggedIn", (req, res) => {
 	try {
 		const token = req.cookies.token;
-
+		// console.log("LOGGED in TOKEN ------>", token)
 		if (!token) {
 			return res.json(false)
 		}
 
 		jwt.verify(token, process.env.JWT_SECRET);
 		res.send(true)
+
+	} catch (err) {
+		console.log(err)
+		res.json(false)
+	}
+})
+
+router.get("/authorize", (req, res) => {
+	try {
+		const token = req.cookies.token;
+		if (!token) {
+			return res.json(false)
+		}
+
+		jwt.verify(token, process.env.JWT_SECRET);
+		res.send(token)
 
 	} catch (err) {
 		console.log(err)

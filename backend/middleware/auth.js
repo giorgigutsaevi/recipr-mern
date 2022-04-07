@@ -3,7 +3,6 @@ import User from "../models/User.js"
 
 const auth = async (req, res, next) => {
 	try {
-		// console.log('from middleware -->>>', req.cookies.token)
 		const token = req.cookies.token;
 
 		if(!token){
@@ -11,7 +10,7 @@ const auth = async (req, res, next) => {
 		}
 
 		const verified = jwt.verify(token, process.env.JWT_SECRET);
-		console.log('verified', verified)
+	
 		// req.user = verified.user;
 		req.user = verified
 

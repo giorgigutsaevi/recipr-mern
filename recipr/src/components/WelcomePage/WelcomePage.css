@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald:wght@300;400;500;600;700&display=swap');
+
+.welcome--page{
+	text-align: center;
+	font-family: 'Fjalla One', sans-serif;
+	padding: 10px;
+}

@@ -10,14 +10,15 @@ function Header() {
 
 	const navigate = useNavigate();
 	const { loggedIn, getLoggedIn } = useContext(AuthContext)
-	console.log(loggedIn)
 
 	const handleLogout = async (e) => {
 		e.preventDefault();
 		await axios.get("http://localhost:5001/users/logout");
 		await getLoggedIn();
-		navigate("/login")
+		navigate("/")
 	}
+
+	
 
 	return (
 
@@ -39,8 +40,8 @@ function Header() {
 								<Nav.Link onClick={handleLogout} style={styles.Logout}>Log out</Nav.Link>
 							) :
 							(<>
-								<Nav.Link onClick={handleLogout} style={styles.Logout}>Log in</Nav.Link>
-								<Nav.Link onClick={handleLogout} style={styles.Logout}>Sign up</Nav.Link>
+								<Nav.Link href="/login" style={styles.Logout}>Log in</Nav.Link>
+								<Nav.Link href="/signup" style={styles.Logout}>Sign up</Nav.Link>
 							</>
 							)}
 
