@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useContext } from 'react'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
@@ -17,8 +18,6 @@ function Header() {
 		await getLoggedIn();
 		navigate("/")
 	}
-
-	
 
 	return (
 

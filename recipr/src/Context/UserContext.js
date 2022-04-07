@@ -5,19 +5,23 @@ const UserContext = createContext();
 
 
 const UserContextProvider = (props) => {
-	const [userToken, setUserToken] = useState(undefined)
+	const [userToken, setUserToken] = useState("")
 
 	const getUser = async () => {
 		const userResponse = await axios.get("http://localhost:5001/authorize")
-		setUserToken(userResponse.data);
+		const data = await userResponse.data
+		setUserToken(data)
+		
 	}
 
 	useEffect(() => {
-		getUser();
+		getUser()
 	}, [])
 
+
+
 	return (
-		<UserContext.Provider value={{ userToken, setUserToken }}>
+		<UserContext.Provider value={{ userToken, getUser }}>
 			{props.children}
 		</UserContext.Provider>
 

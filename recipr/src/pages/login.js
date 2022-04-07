@@ -4,6 +4,8 @@ import axios from 'axios'
 import "../styles/login.css"
 import { useContext } from 'react'
 import AuthContext from '../Context/AuthContext'
+import UserContext from "../Context/UserContext";
+
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState({
@@ -12,6 +14,7 @@ const Login = () => {
   })
 
   const { getLoggedIn } = useContext(AuthContext);
+  const { getUser } = useContext(UserContext);
 
   const isInvalid = loginInput.email === "" || loginInput.password === "";
 
@@ -31,9 +34,10 @@ const Login = () => {
     e.preventDefault();
     await axios.post("http://localhost:5001/users/login", loginInput);
     await getLoggedIn()
+    await getUser()
     navigate("/")
-  
   }
+
   return (
     <div className='login'>
       <div className='login__wrapper'>

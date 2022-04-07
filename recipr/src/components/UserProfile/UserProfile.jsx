@@ -1,15 +1,28 @@
-import React, { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../Context/UserContext";
-import jwtDecoder from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import "./UserProfile.css";
 
 const UserProfile = () => {
-  const { userToken, setUserToken } = useContext(UserContext);
-  
-  var token = userToken;
-  var decoded = jwtDecoder(token);
+  const [username, setUsername] = useState("");
+  const { userToken } = useContext(UserContext);
+	console.log("FROM USER PROFILE -----> ", userToken)
 
-  return <div></div>;
+
+  useEffect(() => {
+    if (userToken) {
+      const decoded = jwtDecode(userToken);
+      const decodedUsername = decoded.username
+			setUsername(decodedUsername)
+    }
+  }, []);
+
+  return (
+    <div>
+      <h1>Welcome, {username}</h1>
+    </div>
+  );
 };
 
 export default UserProfile;

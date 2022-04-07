@@ -18,23 +18,23 @@ function App() {
   const [editId, setEditId] = useState("")
 
   return (
-    <UserContextProvider>
-      <AuthContextProvider>
-        <EditingContext.Provider value={{ editId, setEditId }}>
-          <Router>
-            <Routes>
-              <Route exact path='/' element={<Dashboard />}></Route>
-              <Route exact path='/login' element={<Login />}></Route>
-              <Route exact path='/signup' element={<Signup />}></Route>
-              <Route path='/add' element={<AddRecipe />}></Route>
-              <Route path='/edit/:id' element={<EditRecipe />}></Route>
-              <Route path='/about' element={<About />}></Route>
-              <Route path='/contact-us' element={<Contact />}></Route>
-            </Routes>
-          </Router>
-        </EditingContext.Provider>
-      </AuthContextProvider>
-    </UserContextProvider>
+      <UserContextProvider>
+        <AuthContextProvider>
+          <EditingContext.Provider value={{ editId, setEditId }}>
+            <Router>
+              <Routes>
+                <Route exact path='/' element={<Dashboard />}></Route>
+                <Route exact path='/login' element={<Login />}></Route>
+                <Route exact path='/signup' element={<Signup />}></Route>
+                <Route path='/add' element={<AddRecipe />}></Route>
+                <Route path='/edit/:id' element={<EditRecipe />}></Route>
+                <Route path='/about' element={<About />}></Route>
+                <Route path='/contact-us' element={<Contact />}></Route>
+              </Routes>
+            </Router>
+          </EditingContext.Provider>
+        </AuthContextProvider>
+      </UserContextProvider>
   );
 }
 
