@@ -9,6 +9,7 @@ import { useDate } from "../../hooks/useTime";
 const UserProfile = () => {
   const [username, setUsername] = useState("");
   const { userToken } = useContext(UserContext);
+	const [weatherData, setWeatherData] = useState({})
 
   const { time, wish } = useDate();
 
@@ -33,12 +34,15 @@ const UserProfile = () => {
 
   useEffect(() => {
 		const fetchWeatherData = async () => {
-			const result = await axios.get("http://localhost:5001/weather")
-			const data = await result.data
-			console.log(data)
+			const fetchResult = await axios.get("http://localhost:5001/weather")
+			const fetchData = await fetchResult.data
+			setWeatherData(fetchData)
+			
 		}
 		fetchWeatherData()
   }, []);
+
+	const currentTemp = weatherData.main?.temp.toFixed(0)
 
   return (
     <div className="userProfile">
@@ -50,7 +54,7 @@ const UserProfile = () => {
       </div>
       <div className="userProfile--timeWeather__wrapper">
         <h5>⌚️ {time}</h5>
-        <p>🌡 </p>
+        <h5>🌡 {currentTemp}°C</h5>
       </div>
     </div>
   );
