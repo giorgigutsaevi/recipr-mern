@@ -4,6 +4,7 @@ import WelcomePage from '../components/WelcomePage/WelcomePage';
 import RecipesList from '../components/RecipesList/RecipesList';
 import AuthContext from '../Context/AuthContext';
 import UserContext from '../Context/UserContext';
+import UserProfile from '../components/UserProfile/UserProfile';
 
 const Dashboard = () => {
 
@@ -15,7 +16,7 @@ const Dashboard = () => {
 	return (
 		<div>
 			<Header />
-			<h1 className='text-center'>Hello</h1>
+			{loggedIn && <UserProfile/>}
 			{!loggedIn && <WelcomePage /> }
 
 			{loggedIn && <RecipesList />}
