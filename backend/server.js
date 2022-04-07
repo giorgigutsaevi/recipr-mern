@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 
 import recipeRoute from "./routes/recipeRoutes.js"
 import userRoute from "./routes/userRoutes.js"
+import weatherRouter from "./routes/weather.js"
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 // API Middleware
 app.use("/", recipeRoute);
 app.use("/", userRoute);
+app.use("/", weatherRouter)
 
 
 

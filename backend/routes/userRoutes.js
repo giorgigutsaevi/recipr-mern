@@ -91,7 +91,6 @@ router.get("/users/logout", (req, res) => {
 router.get("/loggedIn", (req, res) => {
 	try {
 		const token = req.cookies.token;
-		// console.log("LOGGED in TOKEN ------>", token)
 		if (!token) {
 			return res.json(false)
 		}

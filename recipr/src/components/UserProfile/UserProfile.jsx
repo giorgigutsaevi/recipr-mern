@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
 import UserContext from "../../Context/UserContext";
 import jwtDecode from "jwt-decode";
 import "./UserProfile.css";
@@ -30,17 +31,27 @@ const UserProfile = () => {
     }
   }, []);
 
+  useEffect(() => {
+		const fetchWeatherData = async () => {
+			const result = await axios.get("http://localhost:5001/weather")
+			const data = await result.data
+			console.log(data)
+		}
+		fetchWeatherData()
+  }, []);
+
   return (
     <div className="userProfile">
       <div className="userProfile--message__wrapper">
-        <h1 className="userProfile__title">{wish} {username} 👋 </h1>
+        <h1 className="userProfile__title">
+          {wish} {username} 👋{" "}
+        </h1>
         <h5 className="userProfile__date">{displayDate()}</h5>
       </div>
-			<div className="userProfile--timeWeather__wrapper">
-				<h6>⌚️ {time}</h6>
-				<p>🌡 </p>
-			</div>
-		
+      <div className="userProfile--timeWeather__wrapper">
+        <h5>⌚️ {time}</h5>
+        <p>🌡 </p>
+      </div>
     </div>
   );
 };
