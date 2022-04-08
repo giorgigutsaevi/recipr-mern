@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router';
 import "../styles/signup.css"
 import AuthContext from '../Context/AuthContext'
+import UserContext from "../Context/UserContext";
 
 
 const Signup = () => {
@@ -13,7 +14,9 @@ const Signup = () => {
 
   })
 
-  const { getLoggedIn } = useContext(AuthContext)
+  const { getLoggedIn } = useContext(AuthContext);
+  const { getUser } = useContext(UserContext);
+  
   const isInvalid = formData.username === "" || formData.email === "" || formData.password === "";
 
   const handleChange = (e) => {
@@ -33,8 +36,9 @@ const Signup = () => {
     await axios.post("http://localhost:5001/users/register", formData, {
       withCredentials: true
     });
-    await getLoggedIn()
-    navigate("/")
+    await getLoggedIn();
+    await getUser();
+    navigate("/");
 
   }
 

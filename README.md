@@ -45,7 +45,12 @@ http://localhost:5001/
 ### Sign Up Page
 
 ![signup](https://i.imgur.com/0NHWjWt.png)
-Enter your *username*, *email* and *password*
+🎯 Enter your *username*, *email* and *password* to create your ✨Account✨\
+🎯 Once the account is created, you will be redirected to a Homepage/Dashboard\
+
+
+
+
 
 
 
