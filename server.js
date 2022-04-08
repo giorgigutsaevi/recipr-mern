@@ -18,7 +18,7 @@ mongoose.connect(uri, {
 
 // configuring the server
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080
 
 // setting up the middleware
 app.use(express.json());
