@@ -10,7 +10,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 const Recipe = (props) => {
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 320 }}>
       <CardMedia
         component="img"
         alt="recipe img"
@@ -30,7 +30,7 @@ const Recipe = (props) => {
         >
           {props.data.description}
         </Typography>
-      </CardContent>
+      </CardContent> 
       <CardActions>
         <Button
           size="medium"

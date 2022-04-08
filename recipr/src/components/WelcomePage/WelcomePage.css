@@ -1,7 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .welcome--page{
-	text-align: center;
-	font-family: 'Fjalla One', sans-serif;
-	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.welcome--page__title{
+	font-family: 'Bebas Neue', cursive;
+	padding: 20px;
+	font-size: 3em;
 }

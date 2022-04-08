@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useContext } from 'react'
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router'
+import { Navbar, Nav, TabContainer} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
-import styles from "./headerStyles"
 import AuthContext from '../../Context/AuthContext'
+import "./Header.css"
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'; 
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Header() {
 
@@ -20,35 +22,36 @@ function Header() {
 	}
 
 	return (
-
-		<Navbar expand="lg" style={styles.Navbar}>
-			<Container fluid >
-				<Navbar.Brand href="#" style={styles.CustomNavElement}>Recipr</Navbar.Brand>
+		<Navbar expand="lg" className='navbar'>
+			<div className='navbar__logo--wrapper'>
+			<img className='navbar__logo' alt ='navbar-logo' src='https://static.thenounproject.com/png/171178-200.png'></img>
+			<Navbar.Brand className='navbar__brand'>Recipr</Navbar.Brand>
+			</div>
+			<Container fluid className='navbar__container' >
 				<Navbar.Toggle aria-controls="navbarScroll" />
-				<Navbar.Collapse id="navbarScroll">
-
-					<Nav
-						className="me-auto my-2 my-lg-0"
-
+				<Navbar.Collapse className='navbar__toggle' id="navbarScroll">
+					<TabContainer
 						navbarScroll
 					>
-						<Nav.Link href="/" style={styles.CustomNavElement}>My Recipes</Nav.Link>
-						<Nav.Link href="/add" style={styles.CustomNavElement}>Add a Recipe</Nav.Link>
 						{loggedIn ?
 							(
-								<Nav.Link onClick={handleLogout} style={styles.Logout}>Log out</Nav.Link>
+								<>
+									<Nav>
+										<Nav.Link href="/" className='navbar__brand' >My Recipes</Nav.Link>
+										<Nav.Link href="/add" className='navbar__brand'><AddCircleOutlineIcon/>  Add a Recipe</Nav.Link>
+									</Nav>
+									<Nav.Link onClick={handleLogout} className='navbar__logout'>Log out <LogoutIcon/></Nav.Link>
+								</>
 							) :
 							(<>
-								<Nav.Link href="/login" style={styles.Logout}>Log in</Nav.Link>
-								<Nav.Link href="/signup" style={styles.Logout}>Sign up</Nav.Link>
+								<Nav.Link href="/login" className='navbar__logout'>Log in</Nav.Link>
+								<Nav.Link href="/signup" className='navbar__logout'>Sign up</Nav.Link>
 							</>
 							)}
-
-					</Nav>
+					</TabContainer>
 				</Navbar.Collapse>
 			</Container>
 		</Navbar>
-
 	)
 }
 
