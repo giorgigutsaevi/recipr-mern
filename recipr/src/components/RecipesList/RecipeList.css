@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald:wght@300;400;500;600;700&display=swap');
+
 .recipes__container{
 	width: 90%;
 	margin: auto;
@@ -16,4 +18,8 @@
 	padding: 15px;
 } 
 
-
+.norecipe__message{
+	padding: 20px;
+	text-align: center;
+	font-family: 'Fjalla One', sans-serif;
+}

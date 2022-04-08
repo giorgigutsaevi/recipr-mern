@@ -5,6 +5,7 @@ import Recipe from "../Recipe/Recipe";
 import "./RecipeList.css";
 import axios from "axios";
 import EditingContext from "../../Context/EditingContext";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const RecipesList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -42,9 +43,15 @@ const RecipesList = () => {
     />
   ));
 
+  console.log(receivedRecipes)
   return (
     <div className='recipes__container'>
-      <div className="recipes">{receivedRecipes}</div>
+      {receivedRecipes.length > 1 ? <div className="recipes">{receivedRecipes}</div> : (
+        <>
+        <h2 className="norecipe__message">You have no recipes yet 📚</h2>
+        <h4 className="norecipe__message">Click on <AddCircleOutlineIcon/> icon to add your favourite recipes </h4>
+        </>
+      )}
     </div>
   );
 };
