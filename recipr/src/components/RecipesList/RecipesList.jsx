@@ -43,10 +43,9 @@ const RecipesList = () => {
     />
   ));
 
-  console.log(receivedRecipes)
   return (
     <div className='recipes__container'>
-      {receivedRecipes.length > 1 ? <div className="recipes">{receivedRecipes}</div> : (
+      {receivedRecipes.length > 0 ? <div className="recipes">{receivedRecipes}</div> : (
         <>
         <h2 className="norecipe__message">You have no recipes yet 📚</h2>
         <h4 className="norecipe__message">Click on <AddCircleOutlineIcon/> icon to add your favourite recipes </h4>
