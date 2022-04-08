@@ -2,7 +2,7 @@
 
 # About the Project
 This is my Recipe app that allows users to store their favourite recipes.\
-This app is created entirely with a MERN stack: MongoDB, Express.js, React.js and Node.js for the backend. \
+This app is created entirely with a MERN stack: MongoDB, Express.js, React.js and Node.js for the backend.
 
 ## Project Overview
 - Visiting users can sign up, log in and log out. 
