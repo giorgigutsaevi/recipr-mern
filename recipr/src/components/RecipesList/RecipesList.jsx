@@ -43,9 +43,12 @@ const RecipesList = () => {
   ));
 
   return (
-    <div className="container">
+    <div className='recipes__container'>
       <div className="recipes">{receivedRecipes}</div>
     </div>
+    // <div className="container">
+    //   
+    // </div>
   );
 };
 

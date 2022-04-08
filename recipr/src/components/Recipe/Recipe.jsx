@@ -10,7 +10,10 @@ import EditIcon from "@mui/icons-material/Edit";
 
 const Recipe = (props) => {
   return (
-    <Card sx={{ maxWidth: 320 }}>
+    <Card sx={{ 
+      maxWidth: 320,
+      backgroundColor: '#F0ECE3'
+       }}>
       <CardMedia
         component="img"
         alt="recipe img"
@@ -18,7 +21,14 @@ const Recipe = (props) => {
         image={props.data.image}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography 
+        gutterBottom
+        variant="h5" 
+        component="div"
+        sx={{
+          height: 50,
+        }}
+        >
           {props.data.title}
         </Typography>
         <Typography
@@ -26,6 +36,7 @@ const Recipe = (props) => {
           color="text.secondary"
           sx={{
             height: 80,
+            marginTop: 5,
           }}
         >
           {props.data.description}
