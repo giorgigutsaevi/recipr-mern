@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useContext } from 'react'
-import { Navbar, Nav, TabContainer} from 'react-bootstrap'
+import { Navbar, Nav, TabContainer } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import AuthContext from '../../Context/AuthContext'
 import "./Header.css"
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'; 
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function Header() {
@@ -24,8 +24,8 @@ function Header() {
 	return (
 		<Navbar expand="lg" className='navbar'>
 			<div className='navbar__logo--wrapper'>
-			<img className='navbar__logo' alt ='navbar-logo' src='https://static.thenounproject.com/png/171178-200.png'></img>
-			<Navbar.Brand className='navbar__brand'>Recipr</Navbar.Brand>
+				<img className='navbar__logo' alt='navbar-logo' src='https://static.thenounproject.com/png/171178-200.png'></img>
+				<Navbar.Brand className='navbar__brand'>Recipr</Navbar.Brand>
 			</div>
 			<Container fluid className='navbar__container' >
 				<Navbar.Toggle aria-controls="navbarScroll" />
@@ -38,9 +38,9 @@ function Header() {
 								<>
 									<Nav>
 										<Nav.Link href="/" className='navbar__brand' >My Recipes</Nav.Link>
-										<Nav.Link href="/add" className='navbar__brand'><AddCircleOutlineIcon/>  Add a Recipe</Nav.Link>
+										<Nav.Link href="/add" className='navbar__brand'><AddCircleOutlineIcon />  Add a Recipe</Nav.Link>
 									</Nav>
-									<Nav.Link onClick={handleLogout} className='navbar__logout'>Log out <LogoutIcon/></Nav.Link>
+									<Nav.Link onClick={handleLogout} className='navbar__logout'>Log out <LogoutIcon /></Nav.Link>
 								</>
 							) :
 							(<>

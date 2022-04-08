@@ -10,10 +10,12 @@ import EditIcon from "@mui/icons-material/Edit";
 
 const Recipe = (props) => {
   return (
-    <Card sx={{ 
-      maxWidth: 320,
-      backgroundColor: '#F0ECE3'
-       }}>
+    <Card
+      sx={{
+        maxWidth: 320,
+        backgroundColor: "#F0ECE3",
+      }}
+    >
       <CardMedia
         component="img"
         alt="recipe img"
@@ -21,13 +23,13 @@ const Recipe = (props) => {
         image={props.data.image}
       />
       <CardContent>
-        <Typography 
-        gutterBottom
-        variant="h5" 
-        component="div"
-        sx={{
-          height: 50,
-        }}
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            height: 50,
+          }}
         >
           {props.data.title}
         </Typography>
@@ -41,13 +43,13 @@ const Recipe = (props) => {
         >
           {props.data.description}
         </Typography>
-      </CardContent> 
+      </CardContent>
       <CardActions>
         <Button
           size="medium"
-					sx={{
-						border: 1,
-						color: "#ab003c"
+          sx={{
+            border: 1,
+            color: "#ab003c",
           }}
           onClick={() => props.handleDelete(props.data._id)}
           startIcon={<DeleteIcon />}
@@ -58,7 +60,7 @@ const Recipe = (props) => {
           size="medium"
           sx={{
             color: "##3f51b5",
-						border: 1,
+            border: 1,
           }}
           onClick={() => props.handleEdit(props.data._id)}
           startIcon={<EditIcon />}

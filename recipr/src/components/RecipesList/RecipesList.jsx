@@ -46,9 +46,6 @@ const RecipesList = () => {
     <div className='recipes__container'>
       <div className="recipes">{receivedRecipes}</div>
     </div>
-    // <div className="container">
-    //   
-    // </div>
   );
 };
 
